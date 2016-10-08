@@ -1,16 +1,13 @@
 import React from 'react';
+import Nav from './components/Nav';
 
-export default class Index extends React.Component {
-    _handleClick() {
-        alert();
-    }
-
-    render() {
-        return (
-            <div>
-                <h1>Hello World</h1>
-                <button onClick={this._handleClick}>Click Me</button>
-            </div>
-        );
-    }
+export default class Layout extends React.Component {
+	render() {
+		return (
+			<div>
+				<Nav />
+				{this.props.children}
+			</div>
+		)
+	}
 }

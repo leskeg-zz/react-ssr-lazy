@@ -9,10 +9,10 @@ const PORT = 3000;
 
 app.use(express.static('dist'));
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
 	const app = renderToString(<App />);
 	const html = fs.readFile('./index.html', 'utf8', (err,data) =>
-		data.replace('id="app">', `id="app">${app}`) || err);
+		data ? data.replace('id="app">', `id="app">${app}`) : null || err);
     res.send(html);
 });
 
