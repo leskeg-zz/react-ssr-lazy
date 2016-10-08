@@ -7,7 +7,7 @@ export default class About extends React.Component {
 	render() {
 		return (
 			<div>
-				Services: {store.test}
+				About
 			</div>
 		)
 	}

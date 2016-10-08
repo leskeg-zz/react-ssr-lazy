@@ -11,7 +11,7 @@ export default class Nav extends React.Component {
 					<Link to='/'>Index</Link>
 				</li>
 				<li>
-					<Link to='/services'>Service</Link>
+					<Link to='/about'>About</Link>
 				</li>
 			</ul>
 		)
