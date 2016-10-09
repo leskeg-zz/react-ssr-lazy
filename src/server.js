@@ -10,19 +10,17 @@ const PORT = 8080;
 
 app.use(express.static('dist'));
 
+// app.get('/test', (req, res) => res.send('test'));
+
 app.get('*', (req, res) => {
     match({
         routes,
         location: req.url
     }, (error, redirectLocation, renderProps) => {
         const app = renderToString(<RouterContext {...renderProps}/>);
-        fs.readFile(__dirname + '/app.html', 'utf8', (err, data) => {
-            const html = data
-                ? data.replace('id="app">', `id="app">${app}`)
-                : null || err;
-            res.send(html);
-        });
+        fs.readFile(__dirname + '/app.html', 'utf8', (err, data = '') =>
+			res.send(data.replace('id="app">', `id="app">${app}`)) || err);
     });
 });
 
-app.listen(PORT, () => console.log('http://localhost:' + PORT));
+app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
