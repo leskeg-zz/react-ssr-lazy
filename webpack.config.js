@@ -3,11 +3,11 @@ var isProd = (process.env.NODE_ENV === 'production');
 
 module.exports = {
     entry: {
-		client: __dirname + '/src/client.js'
+		client: './src/client.js'
 	},
     output: {
         filename: '[name].bundle.js',
-        path: __dirname + '/dist/static/'
+        path: './dist/static/'
     },
     module: {
         loaders: [
@@ -25,7 +25,7 @@ module.exports = {
         historyApiFallback: true
     },
     plugins: [new HtmlWebpackPlugin({
-            template: __dirname + '/src/index.html',
+            template: './src/index.html',
             filename: isProd
                 ? 'app.html'
                 : 'index.html'
