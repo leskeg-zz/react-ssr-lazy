@@ -17,6 +17,9 @@ module.exports = {
         ]
     },
     devServer: {
+		inline: true,
+		hrm: true,
+		progress: true,
         historyApiFallback: true
     },
     plugins: [new HtmlWebpackPlugin({
