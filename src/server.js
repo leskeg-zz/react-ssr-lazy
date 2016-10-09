@@ -1,8 +1,9 @@
 import express from 'express';
 import fs from 'fs';
-import React from 'react';
+import React from 'react/dist/react.min';
 import {renderToString} from 'react-dom/server';
-import {match, RouterContext} from 'react-router';
+import RouterContext from 'react-router/lib/RouterContext';
+import match from 'react-router/lib/match';
 import routes from './routes';
 
 const app = express();
