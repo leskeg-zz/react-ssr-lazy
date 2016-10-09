@@ -15,7 +15,14 @@ module.exports = {
         loaders: [{
             test: /\.js$/,
             exclude: /node_modules/,
-            loader: 'babel'
+            loader: 'babel',
+			query: {
+				"presets": ["react", "latest"],
+	            "plugins": [
+	                "transform-decorators-legacy",
+	                "transform-class-properties"
+	            ]
+			}
         }],
         noParse: /node_modules\/react\/dist/
     },
