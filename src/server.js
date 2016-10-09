@@ -2,13 +2,14 @@ import express from 'express';
 import fs from 'fs';
 import React from 'react';
 import {renderToString} from 'react-dom/server';
-import {match, RouterContext} from 'react-router'
+import {match, RouterContext} from 'react-router';
 import routes from './routes';
 
 const app = express();
 const PORT = 8080;
+const staticPath = `${__dirname}/static/`;
 
-app.use(express.static('dist'));
+app.use(express.static(staticPath));
 
 // app.get('/test', (req, res) => res.send('test'));
 
@@ -18,7 +19,7 @@ app.get('*', (req, res) => {
         location: req.url
     }, (error, redirectLocation, renderProps) => {
         const app = renderToString(<RouterContext {...renderProps}/>);
-        fs.readFile(__dirname + '/app.html', 'utf8', (err, data = '') =>
+        fs.readFile(`${staticPath}app.html`, 'utf8', (err, data = '') =>
 			res.send(data.replace('id="app">', `id="app">${app}`)) || err);
     });
 });

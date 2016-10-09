@@ -2,10 +2,12 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var isProd = (process.env.NODE_ENV === 'production');
 
 module.exports = {
-    entry: __dirname + '/src/client.js',
+    entry: {
+		client: __dirname + '/src/client.js'
+	},
     output: {
-        filename: 'bundle.js',
-        path: __dirname + '/dist'
+        filename: '[name].bundle.js',
+        path: __dirname + '/dist/static/'
     },
     module: {
         loaders: [
