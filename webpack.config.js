@@ -17,13 +17,10 @@ module.exports = {
         ]
     },
     devServer: {
-        port: 3001,
-        historyApiFallback: {
-            index: 'index.html'
-        }
+        historyApiFallback: true
     },
     plugins: [new HtmlWebpackPlugin({
-            template: __dirname + '/src/app.html',
+            template: __dirname + '/src/index.html',
             filename: isProd
                 ? 'app.html'
                 : 'index.html'

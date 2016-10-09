@@ -4,7 +4,7 @@
   "description": "",
   "main": "",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot --progress --content-base dist",
+    "dev": "webpack-dev-server --inline --hot --progress --history-api-fallback",
     "prod": "NODE_ENV=production webpack && babel src -d dist && node dist/server"
   },
   "author": "",
