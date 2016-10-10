@@ -5,12 +5,14 @@ import {renderToString} from 'react-dom/server';
 import RouterContext from 'react-router/lib/RouterContext';
 import match from 'react-router/lib/match';
 import path from 'path';
+import compression from 'compression';
 import routes from './routes';
 
 const app = express();
 const PORT = 8080;
 const staticPath = path.join(__dirname, 'static');
 
+app.use(compression({level:9}));
 app.use(express.static(staticPath, {index: false}));
 
 // app.get('/test', (req, res) => res.send('test'));
