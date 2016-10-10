@@ -5,7 +5,7 @@ var webpack = require('webpack'),
 module.exports = {
 	entry: {
 		client: path.join(__dirname, 'src/client.js'),
-		vendor: ['react', 'react-router', 'mobx-react', 'mobx']
+		common: ['react', 'react-router', 'mobx-react', 'mobx', './src/store.js']
 	},
 	output: {
 		filename: '[name].bundle.js',
@@ -43,9 +43,18 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: path.join(__dirname, 'src/index.html'),
-			filename: '../index.html'
+			filename: '../index.html',
+			minify: {
+				collapseWhitespace: true,
+				collapseInlineTagWhitespace: true,
+				removeEmptyAttributes: true,
+				removeOptionalTags: true,
+				removeRedundantAttributes: true,
+				removeScriptTypeAttributes: true,
+				removeStyleLinkTypeAttributes: true
+			}
 		}),
 		new webpack.optimize.UglifyJsPlugin({compress: false}),
-		new webpack.optimize.CommonsChunkPlugin({name: 'vendor', minChunks: 2})
+		new webpack.optimize.CommonsChunkPlugin({name: 'common', minChunks: 2})
 	]
 };
