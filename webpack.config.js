@@ -35,7 +35,7 @@ module.exports = {
 			'react-dom': __dirname + '/node_modules/react-dom/dist/react-dom.min',
 			'mobx': __dirname + '/node_modules/mobx/lib/mobx.min'
 		},
-		fallback: __dirname + './node_modules'
+		fallback: __dirname + '/node_modules'
 	},
 	devServer: {
 		inline: true,
