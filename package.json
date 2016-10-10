@@ -1,21 +1,24 @@
 {
   "name": "universal-react-webpack-init",
   "version": "1.0.0",
-  "description": "",
+  "description": "React + Mobx + Webpack (Server rendering and lazy routes)",
   "main": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leskeg/universal-react-webpack-init.git"
+  },
   "scripts": {
     "dev": "webpack-dev-server",
     "webpack": "webpack",
     "stats": "webpack --json > stats.json",
-    "prod": "NODE_ENV=production webpack && BABEL_ENV=node babel src -d dist && node dist/server"
+    "prod": "webpack && BABEL_ENV=production babel src -d dist && node dist/server"
   },
-  "author": "",
+  "author": "leskeg",
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
     "mobx": "^2.6.0",
     "mobx-react": "^3.5.8",
-    "node-ensure": "0.0.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-router": "^2.8.1"

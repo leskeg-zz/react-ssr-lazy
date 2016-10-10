@@ -1,6 +1,13 @@
 {
     "env": {
-        "node": {
+		"development": {
+            "presets": ["react", "latest"],
+            "plugins": [
+                "transform-decorators-legacy",
+                "transform-class-properties"
+            ]
+        },
+        "production": {
             "presets": ["react", "latest"],
             "plugins": [
                 "transform-decorators-legacy",
