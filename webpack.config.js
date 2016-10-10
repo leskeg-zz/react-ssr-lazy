@@ -22,7 +22,7 @@ module.exports = {
 		],
 		noParse: /node_modules\/react\/dist/
 	},
-	devtool: 'cheap-module-source-map',
+	devtool: 'source-map',
 	resolve: {
 		alias: {
 			'react': path.join(__dirname, 'node_modules/react/dist/react.min'),
