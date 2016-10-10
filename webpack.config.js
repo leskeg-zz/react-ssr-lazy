@@ -9,7 +9,8 @@ module.exports = {
 	},
 	output: {
 		filename: '[name].bundle.js',
-		path: path.join(__dirname, 'dist/static/')
+		path: path.join(__dirname, 'dist/static'),
+		publicPath: '/static/'
 	},
 	module: {
 		loaders: [
@@ -35,11 +36,14 @@ module.exports = {
 		inline: true,
 		hrm: true,
 		progress: true,
-		historyApiFallback: true
+		historyApiFallback: {
+			index: '/static/'
+		}
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: path.join(__dirname, 'src/index.html')
+			template: path.join(__dirname, 'src/index.html'),
+			filename: '../index.html'
 		}),
 		new webpack.optimize.UglifyJsPlugin({compress: false}),
 		new webpack.optimize.CommonsChunkPlugin({name: 'vendor', minChunks: 2})

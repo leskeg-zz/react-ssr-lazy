@@ -10,10 +10,9 @@ import routes from './routes';
 
 const app = express();
 const PORT = 8080;
-const staticPath = path.join(__dirname, 'static');
 
 app.use(compression({level:9}));
-app.use(express.static(staticPath, {index: false}));
+app.use('/static', express.static(path.join(__dirname, 'static'), {index: false}));
 
 // app.get('/test', (req, res) => res.send('test'));
 
@@ -29,7 +28,7 @@ app.get('*', (req, res) => {
 			return;
 		}
 
-		fs.readFile(path.join(staticPath, 'index.html'), 'utf8', (err, data = '') => {
+		fs.readFile(path.join(__dirname, 'index.html'), 'utf8', (err, data = '') => {
 			const app = renderToString(<RouterContext {...renderProps}/>);
 			res.send(data.replace('id="app">', `id="app">${app}`)) || err;
 		});
