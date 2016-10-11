@@ -8,10 +8,10 @@
     "url": "https://github.com/leskeg/universal-react-webpack-init.git"
   },
   "scripts": {
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --config webpack.config.dev.js",
     "webpack": "webpack",
     "stats": "webpack --json > stats.json",
-    "prod": "webpack && BABEL_ENV=production babel src -d dist && node dist/server"
+    "prod": "webpack --config webpack.config.prod.js && babel src -d dist --plugins remove-webpack && node dist/server"
   },
   "author": "leskeg",
   "license": "ISC",

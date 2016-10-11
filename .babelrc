@@ -1,19 +1,7 @@
 {
-    "env": {
-		"development": {
-            "presets": ["react", "latest"],
-            "plugins": [
-                "transform-decorators-legacy",
-                "transform-class-properties"
-            ]
-        },
-        "production": {
-            "presets": ["react", "latest"],
-            "plugins": [
-                "transform-decorators-legacy",
-                "transform-class-properties",
-                "remove-webpack"
-            ]
-        }
-    }
+    "presets": ["react", "latest"],
+    "plugins": [
+        "transform-decorators-legacy",
+        "transform-class-properties"
+    ]
 }
