@@ -26,9 +26,11 @@ webpackConfig.htmlWebpackPluginOptions.minify = {
 };
 
 webpackConfig.config.plugins = [
-	new webpack.optimize.CommonsChunkPlugin(webpackConfig.commonsChunkPluginOptions),
 	new HtmlWebpackPlugin(webpackConfig.htmlWebpackPluginOptions),
-	new webpack.optimize.UglifyJsPlugin({compress: false})
+	new webpack.optimize.CommonsChunkPlugin(webpackConfig.commonsChunkPluginOptions),
+	new webpack.optimize.OccurrenceOrderPlugin(true),
+	new webpack.optimize.UglifyJsPlugin({compress: false}),
+	new webpack.optimize.DedupePlugin()
 ];
 
 module.exports = webpackConfig.config;

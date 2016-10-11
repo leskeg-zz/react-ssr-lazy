@@ -12,8 +12,9 @@ webpackConfig.config.devServer = {
 };
 
 webpackConfig.config.plugins = [
+	new HtmlWebpackPlugin(webpackConfig.htmlWebpackPluginOptions),
 	new webpack.optimize.CommonsChunkPlugin(webpackConfig.commonsChunkPluginOptions),
-	new HtmlWebpackPlugin(webpackConfig.htmlWebpackPluginOptions)
+	new webpack.optimize.OccurrenceOrderPlugin(true)
 ];
 
 module.exports = webpackConfig.config;
