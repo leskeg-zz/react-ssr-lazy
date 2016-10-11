@@ -11,7 +11,7 @@ import routes from './routes';
 const app = express();
 const PORT = 8080;
 
-app.use(compression({level:9}));
+app.use(compression({level: 9}));
 app.use('/static', express.static(path.join(__dirname, 'static'), {index: false}));
 
 // app.get('/test', (req, res) => res.send('test'));
@@ -21,16 +21,18 @@ app.get('*', (req, res) => {
 		routes,
 		location: req.url
 	}, (error, redirectLocation, renderProps) => {
+		const routes = renderProps ? renderProps.routes : null;
 
 		// 404
-		if (renderProps === undefined) {
+		if (routes === null || routes[routes.length - 1].path === '*') {
 			res.redirect('/');
 			return;
 		}
 
-		fs.readFile(path.join(__dirname, 'index.html'), 'utf8', (err, data = '') => {
+		fs.readFile(path.join(__dirname, 'index.html'), 'utf8', (err = '', indexHtml = '') => {
 			const app = renderToString(<RouterContext {...renderProps}/>);
-			res.send(data.replace('id="app">', `id="app">${app}`)) || err;
+			const html = indexHtml.replace('id="app">', `id="app">${app}`) || err;
+			res.send(html);
 		});
 	});
 });
