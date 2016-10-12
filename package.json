@@ -1,7 +1,7 @@
 {
   "name": "my-react-webpack-init",
   "version": "1.0.0",
-  "description": "React + Mobx + Webpack (Server rendering, lazy routes and gzip compression)",
+  "description": "React + Webpack (Server rendering, lazy routes and gzip compression)",
   "main": "",
   "repository": {
     "type": "git",
