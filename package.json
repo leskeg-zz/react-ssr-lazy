@@ -1,11 +1,11 @@
 {
-  "name": "universal-react-webpack-init",
+  "name": "my-react-webpack-init",
   "version": "1.0.0",
   "description": "React + Mobx + Webpack (Server rendering, lazy routes and gzip compression)",
   "main": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/leskeg/universal-react-webpack-init.git"
+    "url": "https://github.com/leskeg/my-react-webpack-init.git"
   },
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.dev.js",
