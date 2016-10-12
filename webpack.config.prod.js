@@ -1,6 +1,6 @@
 var webpack = require('webpack');
-var	HtmlWebpackPlugin = require('html-webpack-plugin');
-var	path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
 var webpackConfig = require('./webpack.config');
 
 webpackConfig.config.module.noParse = /node_modules\/react\/dist/;
@@ -29,7 +29,11 @@ webpackConfig.config.plugins = [
 	new HtmlWebpackPlugin(webpackConfig.htmlWebpackPluginOptions),
 	new webpack.optimize.CommonsChunkPlugin(webpackConfig.commonsChunkPluginOptions),
 	new webpack.optimize.OccurrenceOrderPlugin(true),
-	new webpack.optimize.UglifyJsPlugin({compress: false}),
+	new webpack.optimize.UglifyJsPlugin({
+		compress: {
+			warnings: false
+		}
+	}),
 	new webpack.optimize.DedupePlugin()
 ];
 
