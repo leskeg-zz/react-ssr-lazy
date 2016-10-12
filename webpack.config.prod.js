@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 var path = require('path');
 var webpackConfig = require('./webpack.config');
 
@@ -34,6 +35,11 @@ webpackConfig.config.plugins = [
 			warnings: false
 		}
 	}),
+	new CleanWebpackPlugin(['dist'], {
+      root: __dirname,
+      verbose: true,
+      dry: false
+  }),
 	new webpack.optimize.DedupePlugin()
 ];
 
