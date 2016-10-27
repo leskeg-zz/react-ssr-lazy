@@ -5,7 +5,7 @@ var embedFileSize = 65536;
 module.exports.config = {
 	entry: {
 		client: path.join(__dirname, 'src/client.js'),
-		common: ['react', 'react-router', 'mobx-react', 'mobx', './src/store.js']
+		common: ['react', 'react-router']
 	},
 	output: {
 		filename: '[name]-bundle_[hash].js',
@@ -19,13 +19,6 @@ module.exports.config = {
 				test: /\.js$/,
 				exclude: /node_modules/,
 				loader: 'babel'
-			}, {
-				test: /\.styl$/,
-				loaders: [
-					'style?sourceMap',
-					'css?sourceMap&modules&importLoaders=1&localIdentName=[path][name]-[local]_[hash:base64:5]',
-					'stylus'
-				]
 			}, {
 				test: /\.json$/,
 				loader: 'json'

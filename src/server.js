@@ -30,8 +30,10 @@ app.get('*', (req, res) => {
 		}
 
 		fs.readFile(path.join(__dirname, 'index.html'), 'utf8', (err = '', indexHtml = '') => {
-			const app = renderToString(<RouterContext {...renderProps}/>);
-			const html = indexHtml.replace('id="app">', `id="app">${app}`) || err;
+			global.navigator = { userAgent: req.headers[ 'user-agent' ] };
+			const app = renderToString(<RouterContext {...renderProps} />);
+			const root = '<div id="app">';
+			const html = indexHtml.replace(`${root}`, `${root}${app}`) || err;
 			res.send(html);
 		});
 	});
