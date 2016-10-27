@@ -1,5 +1,4 @@
 var path = require('path');
-
 var embedFileSize = 65536;
 
 module.exports.config = {
@@ -10,7 +9,7 @@ module.exports.config = {
 	output: {
 		filename: '[name]-bundle_[hash].js',
 		chunkFilename: '[id]-chunk_[hash].js',
-		path: path.join(__dirname, 'dist/static'),
+		path: path.join(__dirname, 'dist', 'static'),
 		publicPath: '/static/'
 	},
 	module: {
