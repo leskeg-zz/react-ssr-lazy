@@ -1,4 +1,4 @@
-import App from '../App';
+import Index from '../Index';
 import aboutRoute from './about';
 import {browserHistory} from 'react-router';
 
@@ -6,7 +6,7 @@ export default {
 	childRoutes : [
 		{
 			path: '/',
-			component: App,
+			component: Index,
 			indexRoute: {
 				getComponent(nextState, cb) {
 					require.ensure([], (require) => {
