@@ -4,8 +4,6 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 var path = require('path');
 var webpackConfig = require('./webpack.config');
 
-webpackConfig.config.module.noParse = /node_modules\/react\/dist/;
-
 webpackConfig.htmlWebpackPluginOptions.minify = {
 	collapseWhitespace: true,
 	collapseInlineTagWhitespace: true,
