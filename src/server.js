@@ -8,15 +8,17 @@ import path from 'path';
 import compression from 'compression';
 import routes from './routes';
 
-const app = express();
+const srv = express();
 const PORT = 8080;
+const root = '<div id="app">';
+let html;
 
-app.use(compression({level: 9}));
-app.use('/static', express.static(path.join(__dirname, 'static'), {index: false}));
+srv.use(compression({level: 9}));
+srv.use('/static', express.static(path.join(__dirname, 'static'), {index: false}));
 
-// app.get('/test', (req, res) => res.send('test'));
+// srv.get('/test', (req, res) => res.send('test'));
 
-app.get('*', (req, res) => {
+srv.get('*', (req, res) => {
 	match({
 		routes,
 		location: req.url
@@ -29,14 +31,19 @@ app.get('*', (req, res) => {
 			return;
 		}
 
+		if (html) {
+			res.send(html);
+			return;
+		}
+
 		fs.readFile(path.join(__dirname, 'index.html'), 'utf8', (err = '', indexHtml = '') => {
 			global.navigator = { userAgent: req.headers[ 'user-agent' ] };
 			const app = renderToString(<RouterContext {...renderProps} />);
-			const root = '<div id="app">';
-			const html = indexHtml.replace(`${root}`, `${root}${app}`) || err;
+			html = indexHtml.replace(`${root}`, `${root}${app}`) || err;
 			res.send(html);
 		});
+
 	});
 });
 
-app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
+srv.listen(PORT, () => console.log(`http://localhost:${PORT}`));
