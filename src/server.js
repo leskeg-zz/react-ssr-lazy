@@ -10,10 +10,10 @@ import routes from './routes';
 
 const srv = express();
 const PORT = 8080;
-const root = '<div id="app">';
-let indexHtml;
-
-fs.readFile(path.join(__dirname, 'index.html'), 'utf8', (err = '', text = '') => indexHtml = text);
+const rootElement = '<div id="app">';
+const styleElement = '<style>';
+const indexCss = fs.readFileSync(path.join(__dirname, 'index.css'), 'utf-8');
+const indexHtml = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf-8').replace(`${styleElement}`, `${styleElement}${indexCss}`);
 
 srv.use(compression({level: 9}));
 srv.use('/static', express.static(path.join(__dirname, 'static'), {index: false}));
@@ -32,7 +32,7 @@ srv.get('*', (req, res) => {
 		}
 
 		const app = renderToString(<RouterContext {...renderProps} />);
-		const html = indexHtml.replace(`${root}`, `${root}${app}`) || err;
+		const html = indexHtml.replace(`${rootElement}`, `${rootElement}${app}`) || err;
 		res.send(html);
 	});
 });

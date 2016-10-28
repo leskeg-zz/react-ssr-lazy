@@ -20,10 +20,10 @@ module.exports.config = {
 			loader: 'babel'
 		}, {
 			test: /\.css$/,
-			loader: ExtractTextPlugin.extract(
+			loaders: [
 				'style?sourceMap',
 				'css?sourceMap&modules&importLoaders=1&localIdentName=[path][name]-[local]_[hash:base64:5]'
-			)
+			]
 		}, {
 			test: /\.json$/,
 			loader: 'json'
