@@ -11,7 +11,9 @@ import routes from './routes';
 const srv = express();
 const PORT = 8080;
 const root = '<div id="app">';
-let html;
+let indexHtml;
+
+fs.readFile(path.join(__dirname, 'index.html'), 'utf8', (err = '', text = '') => indexHtml = text);
 
 srv.use(compression({level: 9}));
 srv.use('/static', express.static(path.join(__dirname, 'static'), {index: false}));
@@ -20,26 +22,18 @@ srv.use('/static', express.static(path.join(__dirname, 'static'), {index: false}
 
 srv.get('*', (req, res) => {
 	match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
+		global.navigator = { userAgent: req.headers[ 'user-agent' ] };
 		const routes = renderProps ? renderProps.routes : null;
 
 		// 404
-		// if (routes === null || routes[routes.length - 1].path === '*') {
-		// 	res.redirect('/');
-		// 	return;
-		// }
-
-		if (html) {
-			res.send(html);
+		if (routes === null || routes[routes.length - 1].path === '*') {
+			res.redirect('/');
 			return;
 		}
 
-		fs.readFile(path.join(__dirname, 'index.html'), 'utf8', (err = '', indexHtml = '') => {
-			global.navigator = { userAgent: req.headers[ 'user-agent' ] };
-			const app = renderToString(<RouterContext {...renderProps} />);
-			html = indexHtml.replace(`${root}`, `${root}${app}`) || err;
-			res.send(html);
-		});
-
+		const app = renderToString(<RouterContext {...renderProps} />);
+		const html = indexHtml.replace(`${root}`, `${root}${app}`) || err;
+		res.send(html);
 	});
 });
 
