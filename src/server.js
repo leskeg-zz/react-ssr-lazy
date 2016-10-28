@@ -23,10 +23,10 @@ srv.get('*', (req, res) => {
 		const routes = renderProps ? renderProps.routes : null;
 
 		// 404
-		if (routes === null || routes[routes.length - 1].path === '*') {
-			res.redirect('/');
-			return;
-		}
+		// if (routes === null || routes[routes.length - 1].path === '*') {
+		// 	res.redirect('/');
+		// 	return;
+		// }
 
 		if (html) {
 			res.send(html);

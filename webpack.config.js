@@ -46,5 +46,6 @@ module.exports.commonsChunkPluginOptions = {
 
 module.exports.htmlWebpackPluginOptions = {
 	template: path.join(__dirname, 'src', 'index.html'),
-	filename: '../index.html'
+	filename: '../index.html',
+	favicon: path.join(__dirname, 'src', 'favicon.ico')
 };
