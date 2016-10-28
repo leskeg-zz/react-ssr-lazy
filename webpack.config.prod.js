@@ -17,9 +17,7 @@ webpackConfig.htmlWebpackPluginOptions.minify = {
 };
 
 webpackConfig.config.module.loaders[1].loader = ExtractTextPlugin.extract(
-	'style',
-	'css?modules&importLoaders=1&localIdentName=[path][name]-[local]_[hash:base64:5]',
-	'postcss'
+	'style!css?modules&importLoaders=1&localIdentName=[path][name]-[local]_[hash:base64:5]!postcss'
 );
 
 webpackConfig.config.plugins = [
