@@ -19,10 +19,7 @@ srv.use('/static', express.static(path.join(__dirname, 'static'), {index: false}
 // srv.get('/test', (req, res) => res.send('test'));
 
 srv.get('*', (req, res) => {
-	match({
-		routes,
-		location: req.url
-	}, (error, redirectLocation, renderProps) => {
+	match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
 		const routes = renderProps ? renderProps.routes : null;
 
 		// 404
