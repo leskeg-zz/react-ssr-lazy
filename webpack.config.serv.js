@@ -1,8 +1,8 @@
 var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
 var path = require('path');
 var webpackConfig = require('./webpack.config');
+
+webpackConfig.config.devtool = undefined;
 
 webpackConfig.config.entry = {
 	routes: path.join(__dirname, 'src', 'routes', 'index.js')
@@ -22,8 +22,6 @@ webpackConfig.config.module.loaders[0].query = {
 				'remove-webpack'
 		]
 }
-
-webpackConfig.config.module.devtool = undefined;
 
 path.join(__dirname, 'src', 'routes', 'index.js');
 
