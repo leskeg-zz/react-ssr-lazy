@@ -12,8 +12,9 @@ const srv = express();
 const PORT = 8080;
 const rootElement = '<div id="app">';
 const styleElement = '<style>';
-const indexCss = fs.readFileSync(path.join(__dirname, 'index.css'), 'utf-8');
-const indexHtml = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf-8').replace(`${styleElement}`, `${styleElement}${indexCss}`);
+const enc = 'utf-8';
+const indexCss = fs.readFileSync(path.join(__dirname, 'index.css'), enc);
+const indexHtml = fs.readFileSync(path.join(__dirname, 'index.html'), enc).replace(`${styleElement}`, `${styleElement}${indexCss}`);
 
 srv.use(compression({level: 9}));
 srv.use('/static', express.static(path.join(__dirname, 'static'), {index: false}));
