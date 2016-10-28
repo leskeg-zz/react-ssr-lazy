@@ -1,5 +1,6 @@
 var path = require('path');
 var embedFileSize = 65536;
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports.config = {
 	entry: {
@@ -19,10 +20,10 @@ module.exports.config = {
 			loader: 'babel'
 		}, {
 			test: /\.css$/,
-			loaders: [
+			loader: ExtractTextPlugin.extract(
 				'style?sourceMap',
 				'css?sourceMap&modules&importLoaders=1&localIdentName=[path][name]-[local]_[hash:base64:5]'
-			]
+			)
 		}, {
 			test: /\.json$/,
 			loader: 'json'
