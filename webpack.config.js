@@ -1,6 +1,6 @@
 var path = require('path');
+var autoprefixer = require('autoprefixer');
 var embedFileSize = 65536;
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports.config = {
 	entry: {
@@ -20,10 +20,7 @@ module.exports.config = {
 			loader: 'babel'
 		}, {
 			test: /\.css$/,
-			loaders: [
-				'style?sourceMap',
-				'css?sourceMap&modules&importLoaders=1&localIdentName=[path][name]-[local]_[hash:base64:5]'
-			]
+			loader: 'style?sourceMap!css?sourceMap&modules&importLoaders=1&localIdentName=[path][name]-[local]_[hash:base64:5]!postcss'
 		}, {
 			test: /\.json$/,
 			loader: 'json'
@@ -38,7 +35,7 @@ module.exports.config = {
 			loader: 'url?limit=' + embedFileSize
 		}]
 	},
-	devtool: 'source-map'
+	postcss: [ autoprefixer({ browsers: ['last 2 versions', '> 5%'] }) ]
 };
 
 module.exports.commonsChunkPluginOptions = {

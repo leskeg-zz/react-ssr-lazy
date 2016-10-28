@@ -2,6 +2,8 @@ var webpack = require('webpack');
 var	HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpackConfig = require('./webpack.config');
 
+webpackConfig.config.devtool = 'source-map';
+
 webpackConfig.config.devServer = {
 	inline: true,
 	hrm: true,

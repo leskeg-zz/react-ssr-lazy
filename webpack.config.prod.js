@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 var webpackConfig = require('./webpack.config');
 
@@ -15,7 +16,16 @@ webpackConfig.htmlWebpackPluginOptions.minify = {
 	minifyCSS: true
 };
 
+webpackConfig.config.module.loaders[1].loader = ExtractTextPlugin.extract(
+	'style',
+	'css?modules&importLoaders=1&localIdentName=[path][name]-[local]_[hash:base64:5]',
+	'postcss'
+);
+
 webpackConfig.config.plugins = [
+	new ExtractTextPlugin("../index.css", {
+		allChunks: true
+	}),
 	new HtmlWebpackPlugin(webpackConfig.htmlWebpackPluginOptions),
 	new webpack.optimize.CommonsChunkPlugin(webpackConfig.commonsChunkPluginOptions),
 	new webpack.optimize.OccurrenceOrderPlugin(true),
