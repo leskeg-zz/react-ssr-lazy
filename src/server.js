@@ -15,7 +15,7 @@ const styleElement = '<style>';
 const enc = 'utf-8';
 const indexCss = fs.readFileSync(path.join(__dirname, 'index.css'), enc);
 const indexHtml = fs.readFileSync(path.join(__dirname, 'index.html'), enc)
-										.replace(/<link[^>]*>/g,'')
+										.replace(/<link[^>]*stylesheet.>/g,'')
 										.replace(`${styleElement}`, `${styleElement}${indexCss}`);
 
 srv.use(compression({level: 9}));
