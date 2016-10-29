@@ -14,7 +14,9 @@ const rootElement = '<div id="app">';
 const styleElement = '<style>';
 const enc = 'utf-8';
 const indexCss = fs.readFileSync(path.join(__dirname, 'index.css'), enc);
-const indexHtml = fs.readFileSync(path.join(__dirname, 'index.html'), enc).replace(`${styleElement}`, `${styleElement}${indexCss}`).replace(/<link[^>]*>/g,'');
+const indexHtml = fs.readFileSync(path.join(__dirname, 'index.html'), enc)
+										.replace(/<link[^>]*>/g,'')
+										.replace(`${styleElement}`, `${styleElement}${indexCss}`);
 
 srv.use(compression({level: 9}));
 srv.use('/static', express.static(path.join(__dirname, 'static'), {index: false}));
