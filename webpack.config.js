@@ -22,19 +22,21 @@ module.exports = {
 			loader: 'babel-loader'
 		}, {
 			test: /\.css$/,
-			loader: 'style-loader?sourceMap!css-loader?sourceMap&modules&importLoaders=1&localIdentName=[path][name]-[local]_[hash:base64:5]!postcss'
+			loader: `style-loader?sourceMap
+				!css-loader?sourceMap&modules&importLoaders=1&localIdentName=[path][name]-[local]_[hash:base64:5]
+				!postcss-loader`
 		}, {
 			test: /\.json$/,
 			loader: 'json-loader'
 		}, {
 			test: /\.mp4$/,
-			loader: 'url-loader?limit=' + embedFileSize + '&mimetype=video/mp4'
+			loader: `url-loader?limit=${embedFileSize}&mimetype=video/mp4`
 		}, {
 			test: /\.(jpe?g|png|gif|svg)$/i,
-			loader: 'url-loader?limit=' + embedFileSize + '&mimetype=image/[ext]'
+			loader: `url-loader?limit=${embedFileSize}&mimetype=image/[ext]`
 		}, {
 			test: /\.(otf|eot|ttf|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-			loader: 'url-loader?limit=' + embedFileSize
+			loader: `url-loader?limit=${embedFileSize}`
 		}]
 	},
 	postcss: [ autoprefixer({ browsers: ['last 2 versions', '> 5%'] }) ],
