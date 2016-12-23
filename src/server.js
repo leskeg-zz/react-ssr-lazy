@@ -24,8 +24,9 @@ srv.use('/static', express.static(path.join(__dirname, 'static'), {index: false}
 // srv.get('/test', (req, res) => res.send('test'));
 
 srv.get('*', (req, res) => {
+	global.navigator = { userAgent: req.headers['user-agent'] };
+	global.location = '';
 	match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
-		global.navigator = { userAgent: req.headers[ 'user-agent' ] };
 		const routes = renderProps ? renderProps.routes : null;
 
 		// 404

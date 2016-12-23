@@ -22,9 +22,7 @@ webpackConfig.config.module.loaders[1].loader = ExtractTextPlugin.extract(
 );
 
 webpackConfig.config.plugins = [
-	new ExtractTextPlugin("../index.css", {
-		allChunks: true
-	}),
+	new ExtractTextPlugin('../index.css'),
 	new HtmlWebpackPlugin(webpackConfig.htmlWebpackPluginOptions),
 	new webpack.optimize.CommonsChunkPlugin(webpackConfig.commonsChunkPluginOptions),
 	new webpack.optimize.OccurrenceOrderPlugin(true),

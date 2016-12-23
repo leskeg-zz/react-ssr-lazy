@@ -5,8 +5,6 @@ var webpackConfig = require('./webpack.config');
 webpackConfig.config.devtool = 'source-map';
 
 webpackConfig.config.devServer = {
-	inline: true,
-	hrm: true,
 	progress: true,
 	historyApiFallback: {
 		index: '/static/'

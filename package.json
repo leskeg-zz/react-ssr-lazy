@@ -8,10 +8,12 @@
     "url": "https://github.com/leskeg/my-react-webpack-init.git"
   },
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.config.dev.js",
     "webpack": "webpack",
-    "stats": "webpack --config webpack.config.prod.js --json > stats.json",
-    "prod": "webpack --config webpack.config.prod.js && webpack --config webpack.config.serv.js && babel src/server.js --out-file dist/server.js --minified --plugins remove-webpack && node dist/server"
+    "dev": "webpack-dev-server --inline --hot --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.prod.js",
+    "server": "webpack --config webpack.config.serv.js && babel src/server.js --out-file dist/server.js --minified --plugins remove-webpack && node dist/server",
+    "prod": "webpack --config webpack.config.prod.js && webpack --config webpack.config.serv.js && babel src/server.js --out-file dist/server.js --minified --plugins remove-webpack && node dist/server",
+    "stats": "webpack --config webpack.config.prod.js --json > stats.json"
   },
   "author": "leskeg",
   "license": "ISC",
@@ -20,7 +22,7 @@
     "express": "^4.14.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "react-router": "^2.8.1"
+    "react-router": "^3.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.1",
@@ -33,7 +35,7 @@
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "clean-webpack-plugin": "^0.1.13",
-    "css-loader": "^0.25.0",
+    "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.22.0",
@@ -41,7 +43,7 @@
     "postcss-loader": "^1.1.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.2",
+    "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
   }
 }

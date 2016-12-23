@@ -1,6 +1,6 @@
-import Index from '../Index';
-import aboutRoute from './about';
-import {browserHistory} from 'react-router';
+import Index from '../Index'
+import aboutRoute from './about'
+import {browserHistory} from 'react-router'
 
 export default {
 	childRoutes : [
@@ -10,7 +10,7 @@ export default {
 			indexRoute: {
 				getComponent(nextState, cb) {
 					require.ensure([], (require) => {
-						cb(null, require('../views/Index').default)
+						cb(null, require('../views/Home').default)
 					})
 				}
 			},
