@@ -1,12 +1,12 @@
-let webpackConfig = require('./webpack.config')
+let conf = require('./webpack.config')
 
-webpackConfig.devtool = 'source-map'
+conf.devtool = 'source-map'
 
-webpackConfig.devServer = {
+conf.devServer = {
 	progress: true,
 	historyApiFallback: {
 		index: '/static/'
 	}
 }
 
-module.exports = webpackConfig
+module.exports = conf

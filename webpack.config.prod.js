@@ -3,14 +3,14 @@
  const ExtractTextPlugin = require('extract-text-webpack-plugin')
  const CleanWebpackPlugin = require('clean-webpack-plugin')
  const path = require('path')
- let webpackConfig = require('./webpack.config')
+ let conf = require('./webpack.config')
 
-webpackConfig.module.loaders.find(loader => loader.loader.includes('css-loader')).loader = ExtractTextPlugin.extract(
+conf.module.loaders.find(loader => loader.loader.includes('css-loader')).loader = ExtractTextPlugin.extract(
 	'style',
 	'css?modules&importLoaders=1&localIdentName=[path][name]-[local]_[hash:base64:5]!postcss'
 )
 
-webpackConfig.plugins.find(plugin => plugin instanceof HtmlWebpackPlugin).options.minify = {
+conf.plugins.find(plugin => plugin instanceof HtmlWebpackPlugin).options.minify = {
 	collapseWhitespace: true,
 	collapseInlineTagWhitespace: true,
 	removeEmptyAttributes: true,
@@ -21,7 +21,7 @@ webpackConfig.plugins.find(plugin => plugin instanceof HtmlWebpackPlugin).option
 	minifyCSS: true
 }
 
-webpackConfig.plugins = webpackConfig.plugins.concat([
+conf.plugins = conf.plugins.concat([
 	new ExtractTextPlugin('../index.css'),
 	new CleanWebpackPlugin(['dist'], {
 			root: __dirname,
@@ -44,4 +44,4 @@ webpackConfig.plugins = webpackConfig.plugins.concat([
 	new webpack.optimize.DedupePlugin()
 ])
 
-module.exports = webpackConfig
+module.exports = conf
