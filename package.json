@@ -8,7 +8,6 @@
     "url": "https://github.com/leskeg/my-react-webpack-init.git"
   },
   "scripts": {
-    "webpack": "webpack",
     "dev": "webpack-dev-server --inline --hot --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js",
     "server": "webpack --config webpack.config.serv.js && babel src/server.js --out-file dist/server.js --minified --plugins remove-webpack && node dist/server",
