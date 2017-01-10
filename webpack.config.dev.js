@@ -9,4 +9,7 @@ conf.devServer = {
 	}
 }
 
+conf.module.loaders.find(loader =>	loader.loader.includes('babel-loader'))
+	.loader = 'react-hot!babel-loader'
+
 module.exports = conf
