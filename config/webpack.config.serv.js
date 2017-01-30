@@ -1,8 +1,8 @@
 const webpack = require('webpack')
 const fs = require('fs')
-const { appBabelrc, appRoutes, appDist } = require('./constants')
+const { appBabelrc, appRoutes, appDist, enc } = require('./constants')
 let conf = require('./webpack.config')
-let babelrc = JSON.parse(fs.readFileSync(appBabelrc, 'utf-8'))
+let babelrc = JSON.parse(fs.readFileSync(appBabelrc, enc))
 
 babelrc.plugins.push('remove-webpack')
 

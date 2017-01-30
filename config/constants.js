@@ -15,6 +15,7 @@ module.exports = {
   appIndexJs: resolveApp('src/index.js'),
   appHtml: resolveApp('src/index.html'),
   appCss: resolveApp('src/index.css'),
+  appServer: resolveApp('src/server.js'),
   appRoutes: resolveApp('src/routes.js'),
   appBabelrc: resolveApp('.babelrc')
 }
