@@ -1,18 +1,18 @@
 const webpack = require('webpack')
-const path = require('path')
 const fs = require('fs')
+const { appBabelrc, appRoutes, appDist } = require('./constants')
 let conf = require('./webpack.config')
-let babelrc = JSON.parse(fs.readFileSync(path.join(__dirname, '.babelrc'), 'utf-8'))
+let babelrc = JSON.parse(fs.readFileSync(appBabelrc, 'utf-8'))
 
 babelrc.plugins.push('remove-webpack')
 
 conf.entry = {
-	routes: path.join(__dirname, 'src', 'routes', 'index.js')
+	routes: appRoutes
 };
 
 conf.output = {
 	filename: '[name].js',
-	path: path.join(__dirname, 'dist'),
+	path: appDist,
 	libraryTarget: 'commonjs2'
 };
 

@@ -2,7 +2,7 @@
  const HtmlWebpackPlugin = require('html-webpack-plugin')
  const ExtractTextPlugin = require('extract-text-webpack-plugin')
  const CleanWebpackPlugin = require('clean-webpack-plugin')
- const path = require('path')
+ const { appRoot } = require('./constants')
  let conf = require('./webpack.config')
 
 conf.module.loaders.find(loader => loader.loader.includes('css-loader')).loader = ExtractTextPlugin.extract(
@@ -24,7 +24,7 @@ conf.plugins.find(plugin => plugin instanceof HtmlWebpackPlugin).options.minify 
 conf.plugins = conf.plugins.concat([
 	new ExtractTextPlugin('../index.css'),
 	new CleanWebpackPlugin(['dist'], {
-			root: __dirname,
+			root: appRoot,
 			verbose: true,
 			dry: false
 	}),

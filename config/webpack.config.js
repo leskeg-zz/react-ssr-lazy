@@ -1,19 +1,19 @@
 const webpack = require('webpack')
 const	HtmlWebpackPlugin = require('html-webpack-plugin')
 const autoprefixer = require('autoprefixer')
-const path = require('path')
+const { appIndexJs, appPublic, publicPath, appHtml } = require('./constants')
 const embedFileSize = 65536
 
 module.exports = {
 	entry: {
-		client: path.join(__dirname, 'src', 'client.js'),
+		index: appIndexJs,
 		common: ['react', 'react-router']
 	},
 	output: {
 		filename: '[name]-bundle_[hash].js',
 		chunkFilename: '[id]-chunk_[hash].js',
-		path: path.join(__dirname, 'dist', 'static'),
-		publicPath: '/static/'
+		path: appPublic,
+		publicPath: publicPath
 	},
 	module: {
 		loaders: [{
@@ -42,7 +42,7 @@ module.exports = {
 	postcss: [ autoprefixer({ browsers: ['last 2 versions', '> 5%'] }) ],
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: path.join(__dirname, 'src', 'index.html'),
+			template: appHtml,
 			filename: '../index.html'
 		}),
 		new webpack.optimize.CommonsChunkPlugin({

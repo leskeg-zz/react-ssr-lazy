@@ -1,8 +1,7 @@
 import React from 'react'
 import Nav from './components/Nav'
-import './index.css'
 
-class Index extends React.Component {
+class App extends React.Component {
 	render() {
 		return <div>
 			<Nav />
@@ -11,4 +10,4 @@ class Index extends React.Component {
 	}
 }
 
-export default Index
+export default App
